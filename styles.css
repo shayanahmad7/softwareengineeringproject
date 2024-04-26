@@ -1,0 +1,84 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.hero {
+    background: url('hero.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 {
+    font-size: 48px;
+    margin-left: 40px;
+}
+
+.register-form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    width: 450px; /* Larger form */
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.register-form h2 {
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;  /* Specifying the font family, you can change it to any you prefer */
+    font-size: 24px;  /* Adjusting the size to fit your design better */
+    font-weight: normal;  /* Removing the bold styling */
+}
+
+.register-form input {
+    width: 80%;  /* Adjust the width as needed to suit your design */
+    padding: 12px;
+    margin: 8px auto;  /* This centers the input fields */
+    display: block;  /* Makes input take the full width specified */
+    border-radius: 5px;
+    border: 1px solid #ccc;  /* Optional: adds a subtle border */
+}
+
+.register-form button {
+    background-color: #008577;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px; /* Maintaining the padding for height */
+    font-size: 16px; /* Ensuring the font size is appropriate */
+    width: 50%; /* Adjusting the width to be narrower */
+    margin: 10px auto; /* Centers the button in the form */
+    display: block; /* Ensures the button respects the width and margin settings */
+}
+.how-it-works .feature.large {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.how-it-works .feature.large img {
+    width: 100%;
+    height: auto; /* Adjust height accordingly */
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.about {
+    padding: 20px;
+    background-color: #eef;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
