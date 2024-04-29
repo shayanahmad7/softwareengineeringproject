@@ -1,0 +1,32 @@
+{
+  "name": "Abu Dhabi Eats",
+  "version": "1.0.0",
+  "description": "AI nutrition and food ordering app",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "author": "Shayan Ahmad, Matija Susic, Farzan Ali",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "react-scripts": "^5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

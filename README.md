@@ -67,7 +67,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
     Matija Susic
     Farzan Ali
 
-##Acknowledgments
+## Acknowledgments
 
     Hat tip to anyone whose code was used
     Inspiration
