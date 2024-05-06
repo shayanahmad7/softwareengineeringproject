@@ -1,0 +1,46 @@
+{{!< layouts/main}}
+
+<div class="container">
+      <div class="text-container">
+        <h2>Almost there!<br/> Create your account.</h2>
+
+        <div class="account-creation-form">
+          
+            <form id="profileForm" action="createprofile7" method="POST">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Email address"
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Create a password"
+                title="Must be at least 8 characters"
+                pattern=".{8,}"
+                oninput="this.setCustomValidity('')"
+                oninvalid="this.setCustomValidity('Must be at least 8 characters')"
+              />
+          
+              <div class="terms">
+                <input type="checkbox" id="terms" name="terms" required />
+                <label for="terms"
+                  >I agree to the Terms & Conditions and Privacy Policy.</label
+                >
+              </div>
+          
+              <button type="submit">Continue</button>
+            </form>
+          </div>
+      <!-- Closing form tag -->
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  };
+</script>

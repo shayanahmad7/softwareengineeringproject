@@ -1,0 +1,75 @@
+{{!< layouts/main}}
+
+<div class="container">
+      <div class="text-container">
+        <h2>Do you have any allergies?</h2>
+        <p>Select all that apply.</p>
+      </div>
+      <form id="profileForm" action="/createprofile5" method="POST">
+        <div class="allergies">
+          <label class="allergy-option">
+            <input
+              type="checkbox"
+              name="allergies"
+              value="milk"
+              id="milk"
+              hidden
+            />
+            <span class="custom-button">Milk</span>
+          </label>
+          <label class="allergy-option">
+            <input
+              type="checkbox"
+              name="allergies"
+              value="eggs"
+              id="eggs"
+              hidden
+            />
+            <span class="custom-button">Eggs</span>
+          </label>
+          <label class="allergy-option">
+            <input
+              type="checkbox"
+              name="allergies"
+              value="peanuts"
+              id="peanuts"
+              hidden
+            />
+            <span class="custom-button">Peanuts</span>
+          </label>
+          <label class="allergy-option">
+            <input
+              type="checkbox"
+              name="allergies"
+              value="wheat"
+              id="wheat"
+              hidden
+            />
+            <span class="custom-button">Wheat</span>
+          </label>
+        </label>
+        <label class="allergy-option">
+          <input
+            type="checkbox"
+            name="allergies"
+            value="fish"
+            id="fish"
+            hidden
+          />
+          <span class="custom-button">Fish</span>
+        </label>
+        </div>
+        <div class="button-container">
+          <button type="button" onclick="goBack()">BACK</button>
+          <button type="submit">NEXT</button>
+        </div>
+      </form>
+      <!-- Closing form tag -->
+</div>
+
+
+<script>
+  function goBack() {
+    window.history.back();
+  };
+</script>

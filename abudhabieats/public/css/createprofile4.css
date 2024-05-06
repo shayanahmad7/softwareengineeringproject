@@ -1,0 +1,105 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  header {
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding-left: 210px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .logo {
+    color: #007bff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .container {
+    width: 350px;
+    height: 480px;
+    margin: 20px auto 50px; /* Reduced top margin */
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .text-container {
+    margin-top: -40px; /* Apply negative margin to move it up */
+    text-wrap: nowrap;
+  }
+  h2 {
+    font-size: 20px;
+  }
+
+  .allergies {
+    margin-top: 40px; /* Adjust this value as needed to move the allergy options down */
+    margin-left: -30px;
+  }
+  .allergy-option {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .allergy-option input[type="checkbox"] {
+    display: none;
+  }
+
+  .allergy-option .custom-button {
+    display: flex; /* Use flexbox for easy centering */
+    align-items: center; /* Centers the text vertically */
+    justify-content: center; /* Centers the text horizontally */
+    width: 100%; /* Full width to maintain button size */
+    padding: 15px; /* Padding for spacing inside the button */
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border properties */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transition for background and border color changes */
+    text-align: center; /* Ensures text is centered if flexbox fails */
+  }
+
+  .allergy-option:hover .custom-button {
+    background-color: #f0f0f0;
+  }
+
+  .allergy-option input[type="checkbox"]:checked + .custom-button {
+    border-color: #007bff;
+    background-color: #e7f3ff;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center; /* Align buttons to center */
+    gap: 20px; /* Space between buttons */
+    margin-top: 30px;
+  }
+  button {
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    margin: 20px auto 50px; /* Reduced top margin */
+    font-size: 16px; /* Adjust the size as needed */
+    font-weight: bolder; /* Makes the text bold */
+  }
+  button:disabled {
+    background-color: #ccc;
+  }
+  button[type="button"] {
+    /* This selector targets only button elements of type "button" */
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: white; /* Sets the background to white */
+    color: #007bff; /* Sets the text color to blue */
+    cursor: pointer;
+    border: 1px solid #007bff; /* Optional: adds a blue border */
+  }

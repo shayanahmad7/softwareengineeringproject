@@ -1,0 +1,143 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  header {
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding-left: 210px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .logo {
+    color: #007bff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .container {
+    width: 350px;
+    height: 720px;
+    margin: 50px auto;
+    margin-top: 40px;
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+.measurement-form {
+display: flex;
+flex-direction: column;
+width: 400px; /* Increase the width of the form */
+margin: 40px auto; /* Adjust margin to center the form */
+margin-left: -60px;
+margin-top: -80px;
+padding: 30px; /* Increase padding for better spacing */
+text-align: left;
+}
+
+.measurement-form h2 {
+text-align: center;
+font-size: 24px; /* Increase the size of the header */
+color: #333;
+margin-bottom: 50px; /* Increase spacing after the header */
+}
+
+.form-group {
+margin-bottom: 25px; /* Increase spacing between form groups */
+}
+
+.form-group label {
+font-weight: bold;
+display: block;
+font-size: 18px; /* Increase label font size */
+margin-bottom: 5px;
+}
+
+.form-group input[type="number"] {
+width: 100%;
+padding: 15px; /* Increase padding for larger input fields */
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 18px; /* Increase font size inside input for better readability */
+box-sizing: border-box;
+}
+
+.form-group small {
+display: block;
+margin-top: 5px;
+font-size: 14px; /* Increase small text size for better readability */
+color: #666;
+}
+
+.form-section {
+margin-bottom: 25px;
+width: 360px;
+margin: 20px auto;
+margin-top: -10px;
+padding: 1px; /* Increase padding for larger input fields */
+margin-right: 500px;
+}
+
+.form-section h2 {
+font-size: 18px;
+color: #333;
+margin-bottom: 10px;
+text-align: left;
+}
+
+.radio-group label {
+margin-right: 20px; /* Space between the radio buttons */
+font-size: 14px; /* Font size for labels */
+color: #666;
+}
+
+.radio-group input[type="radio"] {
+margin-right: 5px; /* Space between radio button and label */
+padding: 15px;
+margin-bottom: 25px;
+}
+
+input[type="date"] {
+width: 100%;
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin-top: 2px;
+margin-bottom: 10px;
+}
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    margin-top: -60px;
+    font-size: 16px; /* Adjust the size as needed */
+    font-weight: bolder; /* Makes the text bold */
+  }
+  button:disabled {
+    background-color: #ccc;
+  }
+  button[type="button"] {
+    /* This selector targets only button elements of type "button" */
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: white; /* Sets the background to white */
+    color: #007bff; /* Sets the text color to blue */
+    cursor: pointer;
+    border: 1px solid #007bff; /* Optional: adds a blue border */
+  }

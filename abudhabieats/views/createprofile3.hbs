@@ -1,0 +1,74 @@
+{{!< layouts/main}}
+
+<div class="container">
+      <div class="text-container">
+        <h2>Do you have any dietary restrictions?</h2>
+        <p>Select all that apply.</p>
+      </div>
+      <form id="profileForm" action="/createprofile4" method="POST">
+        <div class="restrictions">
+          <label class="restriction-option">
+            <input
+              type="checkbox"
+              name="restrictions"
+              value="vegan"
+              id="vegan"
+              hidden
+            />
+            <span class="custom-button">Vegan</span>
+          </label>
+          <label class="restriction-option">
+            <input
+              type="checkbox"
+              name="restrictions"
+              value="vegetarian"
+              id="vegetarian"
+              hidden
+            />
+            <span class="custom-button">Vegetarian</span>
+          </label>
+          <label class="restriction-option">
+            <input
+              type="checkbox"
+              name="restrictions"
+              value="diabetic"
+              id="diabetic"
+              hidden
+            />
+            <span class="custom-button">Diabetic</span>
+          </label>
+          <label class="restriction-option">
+            <input
+              type="checkbox"
+              name="restrictions"
+              value="lactose-intol"
+              id="lactose-intol"
+              hidden
+            />
+            <span class="custom-button">Lactose Intolerant</span>
+          </label>
+        </label>
+        <label class="restriction-option">
+          <input
+            type="checkbox"
+            name="restrictions"
+            value="high-cholesterol"
+            id="high-cholesterol"
+            hidden
+          />
+          <span class="custom-button">High Cholesterol</span>
+        </label>
+        </div>
+        <div class="button-container">
+          <button type="button" onclick="goBack()">BACK</button>
+          <button type="submit">NEXT</button>
+        </div>
+      </form>
+      <!-- Closing form tag -->
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  };
+</script>

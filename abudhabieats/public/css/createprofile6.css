@@ -1,0 +1,88 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  header {
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding-left: 210px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .logo {
+    color: #007bff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .container {
+    width: 350px;
+    height: 380px;
+    margin: 50px auto;
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .text-container {
+    margin-top: -50px; /* Apply negative margin to move it up */
+  }
+  
+  .account-creation-form form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 18px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input[type="checkbox"] {
+    margin-right: -5px;
+    margin-bottom: 23px;
+  }
+
+  .terms {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    margin-top: 50px;
+    font-size: 16px; /* Adjust the size as needed */
+    font-weight: bolder; /* Makes the text bold */
+  }
+  button:disabled {
+    background-color: #ccc;
+  }
+  button[type="button"] {
+    /* This selector targets only button elements of type "button" */
+    padding: 20px 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: white; /* Sets the background to white */
+    color: #007bff; /* Sets the text color to blue */
+    cursor: pointer;
+    border: 1px solid #007bff; /* Optional: adds a blue border */
+  }

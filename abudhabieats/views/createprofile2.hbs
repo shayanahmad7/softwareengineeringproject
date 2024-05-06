@@ -1,0 +1,63 @@
+{{!< layouts/main}}
+
+<div class="container">
+      <div class="text-container">
+        <h2>Thanks Matija! Now for your goals.</h2>
+        <p>Select ones that are important to you.</p>
+      </div>
+      <form id="profileForm" action="/createprofile3" method="POST">
+        <div class="goals">
+          <label class="goal-option">
+            <input
+              type="checkbox"
+              name="goals"
+              value="lose_weight"
+              id="lose_weight"
+              hidden
+            />
+            <span class="custom-button">Lose weight</span>
+          </label>
+          <label class="goal-option">
+            <input
+              type="checkbox"
+              name="goals"
+              value="gain_muscle"
+              id="gain_muscle"
+              hidden
+            />
+            <span class="custom-button">Gain muscle</span>
+          </label>
+          <label class="goal-option">
+            <input
+              type="checkbox"
+              name="goals"
+              value="maintain"
+              id="maintain"
+              hidden
+            />
+            <span class="custom-button">Maintain</span>
+          </label>
+          <label class="goal-option">
+            <input
+              type="checkbox"
+              name="goals"
+              value="health"
+              id="health"
+              hidden
+            />
+            <span class="custom-button">Be Healthy</span>
+          </label>
+        </div>
+        <div class="button-container">
+          <button type="button" onclick="goBack()">BACK</button>
+          <button type="submit">NEXT</button>
+        </div>
+      </form>
+      <!-- Closing form tag -->
+    </div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  };
+</script>

@@ -1,0 +1,53 @@
+{{!< layouts/main}}
+
+<div class="container">
+      <div class="measurement-form">
+        <h2>Enter Your Info</h2>
+        <form id="profileForm" action="/createprofile6" method="POST">
+            <div class="form-group">
+                <label for="height">How tall are you?</label>
+                <input type="number" id="height" name="height" placeholder="Height in cm" required min="60" max="270" title="Height must be between 60 and 270 cm" oninput="this.setCustomValidity('')"
+                oninvalid="this.setCustomValidity('Must be between 60 and 270 cm')">
+            </div>
+            <div class="form-group">
+                <label for="weight">How much do you weigh?</label>
+                <input type="number" id="weight" name="weight" placeholder="Weight in kg" required min="30" max="400" title="Weight must be between 30 and 400 kg" oninput="this.setCustomValidity('')"
+                oninvalid="this.setCustomValidity('Must be between 30 and 400 kg')">
+                <small>It's OK to estimate. You can update this later.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="goal_weight">What's your goal weight?</label>
+                <input type="number" id="goal_weight" name="goal_weight" placeholder="Goal weight in kg" required>
+                <small>Don't worry. This doesn't affect your daily calorie goal and you can always change it later.</small>
+            </div>
+            <div class="form-section">
+              <h2>Please select which sex we should use to calculate your calorie needs.</h2>
+                  <div class="radio-group">
+                      <label>
+                          <input type="radio" name="sex" value="male" required>
+                          Male
+                      </label>
+                      <label>
+                          <input type="radio" name="sex" value="female" required>
+                          Female
+                      </label>
+                  </div>
+          
+                  <h2>When were you born?</h2>
+                  <input type="date" name="birthdate" required>
+          </div>
+    </div>
+        <div class="button-container">
+          <button type="button" onclick="goBack()">BACK</button>
+          <button type="submit">NEXT</button>
+        </div>
+      </form>
+      <!-- Closing form tag -->
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  };
+</script>
