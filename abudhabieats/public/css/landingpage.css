@@ -48,18 +48,29 @@ body {
     margin-bottom: 30px;
   }
   .button {
+    display: inline-block; /* Ensures the link behaves like a button */
     padding: 18px 65px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 700; /* Bold text */
     background-color: white;
-    color: #007bff;
+    color: #007bff; /* Blue text */
     border: none;
     border-radius: 50px;
     cursor: pointer;
     text-transform: uppercase;
-    font-weight: bold;
-  }
-.arrow {
-  padding-left: 12px; /* Adds space between the text and the arrow */
-  font-size: 18px; /* You can adjust this size to make the arrow bigger or smaller */
-}
+    text-decoration: none; /* Removes underline from link */
+    text-align: center; /* Centers text in the button */
+    line-height: normal; /* Ensures text is vertically centered */
+    transition: background-color 0.3s, color 0.3s; /* Smooth color transition for hover effects */
+    }
+
+    .button:hover, .button:focus {
+        background-color: #0056b3; /* Changes background on hover/focus */
+        color: white; /* Changes text color on hover/focus */
+        outline: none; /* Removes outline on focus */
+    }
+
+    .arrow {
+        padding-left: 12px; /* Adds space between the text and the arrow */
+        font-size: 18px; /* You can adjust this size to make the arrow bigger or smaller */
+    }
