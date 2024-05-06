@@ -4,31 +4,14 @@
     font-weight: bold;
     text-decoration: none;
   }
+
   .user-info {
-    display: flex;
-    align-items: center; /* Aligns items vertically in the center */
-    justify-content: flex-end; /* Aligns items to the right */
-    padding: 10px 20px; /* More padding on the right and left */
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-    font-family: 'Open Sans', sans-serif; /* Ensures font consistency */
-}
+    padding-right: 80px;
+  }
 
-.user-info span {
-    margin-right: 20px;
-    font-weight: bold; /* Makes username slightly bolder */
-}
+  .user-info span,
+  .user-info a {
+    margin-left: 10px;
+    color: #0066ee;
+  }
 
-.user-info a {
-    color: #007bff;
-    text-decoration: none;
-    padding: 8px 12px; /* Larger padding for better clickability */
-    border-radius: 4px; /* Rounded corners for aesthetics */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-.user-info a:hover {
-    background-color: #007bff; /* Background color on hover */
-    color: white; /* Text color on hover */
-    text-decoration: none; /* Ensures no underline appears on hover */
-}

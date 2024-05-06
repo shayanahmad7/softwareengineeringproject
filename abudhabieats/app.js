@@ -15,9 +15,15 @@ app.set('views', './views');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('landingpage', { style: '/css/landingpage.css' });
+    res.render('landingpage', {
+        style: '/css/landingpage.css',
+        landingHeader: true
+    });
 });
 
+app.get('/login', (req, res) => {
+    res.render('login', { style: '/css/login.css' });  
+});
 // Routes for the create profile pages
 app.get('/createprofile1', (req, res) => {
     res.render('createprofile1', { style: '/css/createprofile1.css' });  // Assuming you have separate CSS for this page

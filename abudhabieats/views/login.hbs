@@ -1,0 +1,35 @@
+<div class="container">
+      <div class="text-container">
+        <h2>Login</h2>
+
+        <div class="account-creation-form">
+            <form action="/submit-your-form-handler" method="POST">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Email address"
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Create a password"
+                title="Must be at least 8 characters, no spaces"
+                pattern=".{8,}"
+                oninput="this.setCustomValidity('')"
+                oninvalid="this.setCustomValidity('Must be at least 8 characters, no spaces')"
+              />
+              <div class="not-a-member">
+                <a href="#">Forgot password?</a>
+              </div>
+              <button type="submit">Continue</button>
+            </form>
+          </div>
+          <div class="not-a-member">
+            Not a member?<a href="#" style="margin-left: 5px;">Sign up now!</a>
+          </div>
+      <!-- Closing form tag -->
+</div>

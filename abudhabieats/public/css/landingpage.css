@@ -18,6 +18,16 @@ body {
     font-weight: bold;
     text-decoration: none;
   }
+  .user-login-icon {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .user-login-icon img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+  }
   .landing-container {
     width: 600px;
     height: 300px;
