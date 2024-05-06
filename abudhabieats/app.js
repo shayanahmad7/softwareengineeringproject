@@ -13,6 +13,8 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+
 
 app.get('/', (req, res) => {
     res.render('landingpage', {
@@ -24,6 +26,12 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login', { style: '/css/login.css' });  
 });
+app.post('/login', (req, res) => {
+    // Here, you would handle the authentication logic.
+    // For now, simply redirect to the home page after login.
+    res.redirect('/home');
+});
+
 // Routes for the create profile pages
 app.get('/createprofile1', (req, res) => {
     res.render('createprofile1', { style: '/css/createprofile1.css' });  // Assuming you have separate CSS for this page
