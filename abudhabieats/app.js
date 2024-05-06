@@ -85,6 +85,19 @@ app.get('/createprofile7', (req, res) => {
     res.render('createprofile7', { style: '/css/createprofile7.css' });
 });
 
+app.post('/createprofile7', (req, res) => {
+    res.redirect('/home');
+});
+
+// Route for the home page
+app.get('/home', (req, res) => {
+    res.render('home', {
+        style: '/css/home.css',
+        extendedHeader: true
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

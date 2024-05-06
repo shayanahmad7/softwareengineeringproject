@@ -82,18 +82,26 @@ body {
     display: flex;
     justify-content: space-between;
   }
-  button {
-    display: flex;
-    margin-top: 25px;
-    padding: 20px 60px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    background-color: #007bff;
-    cursor: pointer;
-    font-size: 16px; /* Adjust the size as needed */
-    font-weight: bolder; /* Makes the text bold */
+  .button, .button-container a {
+      display: inline-flex; /* Changed from inline-block to inline-flex to maintain flex properties */
+      align-items: center; /* Centers text vertically */
+      justify-content: center; /* Centers text horizontally */
+      margin-top: 25px;
+      padding: 20px 60px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      background-color: #007bff;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bolder;
+      text-decoration: none; /* Important to remove underline from links */
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
   }
-  button:disabled {
-    background-color: #ccc;
+  .button:disabled, .button-container a:disabled {
+      background-color: #ccc;
+  }
+  .button:hover, .button-container a:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      color: white;
   }

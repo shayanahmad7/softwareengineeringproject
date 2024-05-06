@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+
+  header {
+    background-color: #fff;
+    color: #0066ee;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Aligns items to each end of the container */
+    align-items: center; /* Aligns items vertically */
+  }
+
+  .logo {
+    padding-left: 80px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .user-info {
+    padding-right: 80px;
+  }
+
+  .user-info span,
+  .user-info a {
+    margin-left: 10px;
+    color: #0066ee;
+  }
+
+  .navbar {
+    background-color: #0066ee;
+    color: #fff;
+    padding: 0px 60px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px; /* Adding padding for space around the text */
+    font-weight: bold; /* Making the text bold */
+  }
+
+  .nav-links a[href="##"] {
+    background-color: #00548b;
+  }
+
+
+  .summary-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: auto;
+  width: fit-content; /* Adjust width as needed */
+  }
+
+  .daily-summary {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    padding: 40px 100px;
+    margin: auto;
+    text-align: left;
+  }
+
+  .calories-remaining {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .calories-text {
+    font-size: 28px;
+    display: grid;
+    grid-template-columns: auto auto; /* Adjust as needed */
+    gap: 20px; /* Adjust as needed */
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .calories-value,
+  .protein-value,
+  .carbs-value,
+  .fat-value {
+    font-size: 28px;
+    color: green;
+  }
+
+  .feeling-hungry-btn {
+    padding: 15px 40px;
+    margin-left: 70px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .feeling-hungry-btn:hover {
+    background-color: #e64d00;
+  }

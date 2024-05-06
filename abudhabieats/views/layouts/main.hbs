@@ -10,9 +10,20 @@
     <title>Abu Dhabi Eats</title>
 </head>
 <body>
-    <header>
-        <a href="/" class="logo">Abu Dhabi Eats</a>
-    </header>
+    {{#if extendedHeader}}
+        <header>
+          <div class="logo">Abu Dhabi Eats</div>
+          <div class="user-info">
+            <span>Hi, {{username}}</span>
+            <a href="#">Settings</a>
+            <a href="#">Log Out</a>
+          </div>
+        </header>
+    {{else}}
+        <header>
+            <a href="/" class="logo">Abu Dhabi Eats</a>
+        </header>
+    {{/if}}
     {{{body}}}
 </body>
 </html>
