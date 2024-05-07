@@ -1,51 +1,31 @@
-
-    <div class="container">
-      <h2>Ready to Choose Your Meal?</h2>
-      <table class="nutrition-table">
+<div class="container">
+    <h2>Ready to Choose Your Meal?</h2>
+    <table class="nutrition-table">
         <thead>
-          <tr>
-            <th>Meal Option</th>
-            <th>Restaurant</th>
-            <th>Calories</th>
-            <th>Carbs g</th>
-            <th>Fat g</th>
-            <th>Protein g</th>
-          </tr>
+            <tr>
+                <th>Meal Option</th>
+                <th>Restaurant</th>
+                <th>Calories</th>
+                <th>Carbs (g)</th>
+                <th>Fat (g)</th>
+                <th>Protein (g)</th>
+            </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><a href="#">{{meal_name1}}</a></td>
-            <td>{{restaurant1}}</td>
-            <td>{{calories1}}</td>
-            <td>{{carbs1}}</td>
-            <td>{{fat1}}</td>
-            <td>{{protein1}}</td>
-          </tr>
-          <tr>
-            <td><a href="#">{{meal_name2}}</a></td>
-            <td>{{restaurant2}}</td>
-            <td>{{calories2}}</td>
-            <td>{{carbs2}}</td>
-            <td>{{fat2}}</td>
-            <td>{{protein2}}</td>
-          </tr>
-          <tr>
-            <td><a href="#">{{meal_name3}}</a></td>
-            <td>{{restaurant3}}</td>
-            <td>{{calories3}}</td>
-            <td>{{carbs3}}</td>
-            <td>{{fat3}}</td>
-            <td>{{protein3}}</td>
-          </tr>
+            {{#each meals}}
+            <tr>
+                <td><a href="{{link}}">{{item}}</a></td>
+                <td>{{restaurant}}</td>
+                <td>{{calories}}</td>
+                <td>{{carbs}}</td>
+                <td>{{fat}}</td>
+                <td>{{protein}}</td>
+            </tr>
+            {{/each}}
         </tbody>
-      </table>
-      <p>Click on one of the meals, or ask for 3 new meals.</p>
-
-      <a href="#" style="text-decoration: none; color: inherit">
-        <img
-          src="/images/reload-arrow.jpg"
-          alt="reload-arrow"
-          style="width: 35px; height: auto"
-        />
-      </a>
-    </div>
+    </table>
+    <p>Click on one of the meals, or ask for 3 new meals.</p>
+    <a href="/meal-feeling-hungry" style="text-decoration: none; color: inherit">
+        <img src="/images/reload-arrow.jpg" alt="reload-arrow" style="width: 35px; height: auto">
+    </a>
+</div>
