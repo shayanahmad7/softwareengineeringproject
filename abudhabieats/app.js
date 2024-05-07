@@ -8,10 +8,26 @@ const bcrypt = require('bcrypt');
 const Meal = require('./models/Meals');  
 const User = require('./models/User'); 
 const connectDB = require('./config/db');
+const openai = require('openai');
+const dotenv = require('dotenv');
+const Handlebars = require('handlebars');
+
 
 
 const app = express();
 const port = 4000;
+
+dotenv.config();
+// Get the OpenAI API key from the environment variables
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+if (!OPENAI_API_KEY) {
+    console.error('OpenAI API key not found. Please add it to your .env file.');
+    process.exit(1);
+}
+
+// Initialize the OpenAI API client
+const client = new openai(OPENAI_API_KEY);
 
 (async () => {
     try {
@@ -21,7 +37,17 @@ const port = 4000;
         app.engine('hbs', engine({
             defaultLayout: 'main',
             layoutsDir: 'views/layouts',
-            extname: '.hbs'
+            extname: '.hbs',
+            helpers: {
+                formatMealPlan: function(text) {
+                   // Replace **text** with <strong>text</strong>
+                    const formattedText = text.replace(/\*\*(.*?)\*\*/gm, '<strong>$1</strong>');
+                    // Convert new lines into paragraphs
+                    return new Handlebars.SafeString(
+                        formattedText.split('\n').map(line => `<p>${line.trim()}</p>`).join('')
+                    );
+                }
+            }
         }));
         app.set('view engine', 'hbs');
         app.set('views', './views');
@@ -411,15 +437,79 @@ const port = 4000;
                 req.flash('error_msg', 'Failed to update profile.');
                 res.redirect('/update-profile');  // Redirect back to the update form
             });
-        });
+            });
 
+            
 
-        app.listen(port, () => {
-            console.log(`Server running on http://localhost:${port}`);
-        });
-    } catch (error) {
-        console.error('Failed to connect to MongoDB', error);
-        process.exit(1);
+            function constructMealPlanPrompt(user) {
+                return `As a nutritionist, create a detailed daily meal plan for a ${user.sex} with the following specifics:
+                Goals: ${user.goals.join(', ')}
+                Height: ${user.height} cm
+                Weight: ${user.weight} kg
+                Goal Weight: ${user.goalWeight ? user.goalWeight + " kg" : "No specific goal weight"}
+                Dietary Restrictions: ${user.restrictions.join(', ') || "None"}
+                Allergies: ${user.allergies.join(', ') || "None"}
+                Please provide a balanced plan including breakfast, lunch, dinner, and suggested snacks. Each meal should include calculated portion sizes with complete calorie and nutrient information, and consider the dietary restrictions and allergies specified.`;
+            }
+            
+            app.get('/ai', async (req, res) => {
+                if (!req.isAuthenticated()) {
+                    console.log("User is not authenticated.");
+                    return res.redirect('/login');
+                }
+            
+                try {
+                    const userId = req.user._id;
+                    console.log("Fetching user with ID:", userId);
+                    const user = await User.findById(userId);
+            
+                    if (!user) {
+                        console.log("No user found for ID:", userId);
+                        return res.status(404).send('User not found');
+                    }
+            
+                    const prompt = constructMealPlanPrompt(user);
+                    console.log("Generated prompt for OpenAI:", prompt);
+                    const mealPlan = await generateMealPlan(prompt);
+            
+                    console.log("Meal plan received from OpenAI:", mealPlan);
+                    res.render('ai', {
+                        style: '/css/ai.css',
+                        extendedHeader: true,
+                        title: "Here's your daily AI meal-plan",
+                        mealPlan
+                    }   );
+                    
+                } catch (error) {
+                    console.error('Error in generating AI Meal Plan:', error);
+                    res.status(500).send('Failed to generate meal plan due to an internal error');
+                }
+            });
+            
+            
+            
+            // This would be the function to interact with OpenAI's API
+            async function generateMealPlan(prompt) {
+                const response = await client.chat.completions.create({
+                    model: 'gpt-3.5-turbo', 
+                    messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: prompt }],
+                    max_tokens: 1500
+                });
+            
+                if (response.choices && response.choices.length > 0 && response.choices[0].message) {
+                    return response.choices[0].message.content.trim();
+                } else {
+                    throw new Error('Invalid response from the OpenAI API');
+                }
+            }
+            
+
+            app.listen(port, () => {
+                console.log(`Server running on http://localhost:${port}`);
+            });
+        } catch (error) {
+            console.error('Failed to connect to MongoDB', error);
+            process.exit(1);
     }
 })();
 
