@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+
+  header {
+    background-color: #fff;
+    color: #0066ee;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Aligns items to each end of the container */
+    align-items: center; /* Aligns items vertically */
+  }
+
+  .logo {
+    padding-left: 80px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .user-info {
+    padding-right: 80px;
+  }
+
+  .user-info span,
+  .user-info a {
+    margin-left: 10px;
+    color: #0066ee;
+  }
+
+  .navbar {
+    background-color: #0066ee;
+    color: #fff;
+    padding: 0px 60px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px; /* Adding padding for space around the text */
+    font-weight: bold; /* Making the text bold */
+  }
+
+  .nav-links a[href="##"] {
+    background-color: #00548b;
+  }
+
+  .container {
+    width: 900px;
+    height: 390px;
+    margin: 20px auto;
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  h2 {
+    color: #00548b;
+    font-size: 36px;
+    margin-top: -40px;
+  }
+
+  p {
+    margin-top: 30px;
+  }
+
+  .nutrition-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .nutrition-table th,
+  .nutrition-table td {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .nutrition-table thead th {
+    background-color: #00548b;
+    color: #fff;
+  }
+
+  .nutrition-table tbody th {
+    background-color: #e8e8e8;
+  }
+
+  .nutrition-table tbody td:first-child:hover {
+    background-color: #e0e0e0;
+    cursor: text;
+  }
+
+  .nutrition-table tbody td:first-child a {
+    display: inline-block;
+    padding: 8px;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+  }
+
+  .nutrition-table tbody td {
+    background-color: #fff;
+  }
+
+  .nutrition-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }

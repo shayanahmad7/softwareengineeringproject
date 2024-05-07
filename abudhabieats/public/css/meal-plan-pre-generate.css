@@ -57,55 +57,53 @@ body {
     background-color: #00548b;
   }
 
-
-  .summary-container {
-  background-color: #f8f9fa;
-  padding: 20px;
-  margin: auto;
-  width: fit-content; /* Adjust width as needed */
-  }
-
-  .daily-summary {
+  .container {
+    width: 350px;
+    height: 240px;
+    margin: 50px auto;
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
-    padding: 40px 100px;
-    margin: auto;
-    text-align: left;
   }
 
-  .calories-remaining {
+  .meal-plan {
+    background-color: #fff;
+    padding: 20px 20px;
+    margin-top: 20px; /* Adjust margin top as needed */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
   }
 
-  .calories-text {
-    font-size: 28px;
-    display: grid;
-    grid-template-columns: auto auto; /* Adjust as needed */
-    gap: 20px; /* Adjust as needed */
+  p {
+    font-size: 22px;
+    margin-top: -10px;
   }
 
-  h2 {
-    font-size: 30px;
-    margin-bottom: 30px;
-    margin-top: 5px;
-    text-align: center;
+  .meal-plan h2 {
+    font-size: 21px;
+    margin-left: 20px;
   }
 
-  .calories-value,
-  .protein-value,
-  .carbs-value,
-  .fat-value {
-    font-size: 28px;
-    color: green;
+  .days-selection {
+    display: flex;
+    align-items: center;
   }
 
-  .feeling-hungry-btn {
-    padding: 15px 40px;
-    margin-left: 70px;
+  .days-selection input[type="number"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .days-selection label {
+    margin-left: 30px; /* Add some space between input and label */
+  }
+  .generate-btn {
+    padding: 10px 40px;
+    margin-top: 36px;
     background-color: #ff5733;
     color: #fff;
     border: none;
@@ -115,9 +113,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
     text-decoration: none;
+    
   }
 
-  .feeling-hungry-btn:hover {
+  .generate-btn:hover {
     background-color: #e64d00;
-  
   }

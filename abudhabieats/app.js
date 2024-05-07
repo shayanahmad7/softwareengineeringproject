@@ -111,6 +111,82 @@ app.get('/home', (req, res) => {
     });
 });
 
+// Route for the meal-feeling-hungry page
+app.get('/meal-feeling-hungry', (req, res) => {
+    res.render('meal-feeling-hungry', {
+        style: '/css/meal-feeling-hungry.css',
+        extendedHeader: true
+    }, function(err, html) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error rendering the page');
+        } else {
+            res.send(html);
+        }
+    });
+});
+
+// Route for the meal-plan-pre-generate-hungry page
+app.get('/meal-plan-pre-generate', (req, res) => {
+    res.render('meal-plan-pre-generate', {
+        style: '/css/meal-plan-pre-generate.css',
+        extendedHeader: true
+    }, function(err, html) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error rendering the page');
+        } else {
+            res.send(html);
+        }
+    });
+});
+
+// Route for the meal-plan-post-generate-hungry page
+app.get('/meal-plan-post-generate', (req, res) => {
+    res.render('meal-plan-post-generate', {
+        style: '/css/meal-plan-post-generate.css',
+        extendedHeader: true
+    }, function(err, html) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error rendering the page');
+        } else {
+            res.send(html);
+        }
+    });
+});
+
+// Route for the meal-plan-post-generate-hungry page
+app.get('/reports', (req, res) => {
+    res.render('reports', {
+        style: '/css/reports.css',
+        extendedHeader: true
+    }, function(err, html) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error rendering the page');
+        } else {
+            res.send(html);
+        }
+    });
+});
+// Route for the meal-plan-post-generate-hungry page
+app.get('/update-profile', (req, res) => {
+    res.render('update-profile', {
+        style: '/css/update-profile.css',
+        extendedHeader: true
+    }, function(err, html) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error rendering the page');
+        } else {
+            res.send(html);
+        }
+    });
+});
+
+
+
 
 
 app.listen(port, () => {

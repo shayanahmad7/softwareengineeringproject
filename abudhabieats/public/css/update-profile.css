@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+
+  header {
+    background-color: #fff;
+    color: #0066ee;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Aligns items to each end of the container */
+    align-items: center; /* Aligns items vertically */
+  }
+
+  .logo {
+    padding-left: 80px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .user-info {
+    padding-right: 80px;
+  }
+
+  .user-info span,
+  .user-info a {
+    margin-left: 10px;
+    color: #0066ee;
+  }
+
+  .navbar {
+    background-color: #0066ee;
+    color: #fff;
+    padding: 0px 60px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2 {
+    margin-top: -20px;
+    margin-bottom: 50px;
+  }
+  .nav-links li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px; /* Adding padding for space around the text */
+    font-weight: bold; /* Making the text bold */
+  }
+
+  .nav-links a[href="##"] {
+    background-color: #00548b;
+  }
+
+  .container {
+    width: 350px;
+    height: 1700px;
+    margin: 50px auto;
+    padding: 70px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  .form-group {
+    margin-bottom: 25px; /* Increase spacing between form groups */
+    text-align: left;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    font-size: 18px; /* Increase label font size */
+    margin-bottom: 5px;
+  }
+
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 15px; /* Increase padding for larger input fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px; /* Increase font size inside input for better readability */
+    box-sizing: border-box;
+  }
+
+  .form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px; /* Increase small text size for better readability */
+    color: #666;
+  }
+
+  .form-section {
+    margin-bottom: 25px;
+    width: 360px;
+    margin: 20px auto;
+    margin-top: -10px;
+    padding: 1px; /* Increase padding for larger input fields */
+    margin-right: 500px;
+  }
+
+  .form-section h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .goals {
+    padding: 20px 30px;
+    margin-left: -30px;
+    margin-top: -15px;
+  }
+  .goal-option {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .goal-option input[type="checkbox"] {
+    display: none;
+  }
+
+  .goal-option .custom-button {
+    display: flex; /* Use flexbox for easy centering */
+    align-items: center; /* Centers the text vertically */
+    justify-content: center; /* Centers the text horizontally */
+    width: 100%; /* Full width to maintain button size */
+    padding: 15px; /* Padding for spacing inside the button */
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border properties */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transition for background and border color changes */
+    text-align: center; /* Ensures text is centered if flexbox fails */
+  }
+
+  .goal-option:hover .custom-button {
+    background-color: #f0f0f0;
+  }
+
+  .goal-option input[type="checkbox"]:checked + .custom-button {
+    border-color: #007bff;
+    background-color: #e7f3ff;
+  }
+
+
+  .restrictions {
+    margin-top: -30px; /* Adjust this value as needed to move the restriction options down */
+    margin-left: -30px;
+    padding: 20px 30px;
+  }
+  .restriction-option {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .restriction-option input[type="checkbox"] {
+    display: none;
+  }
+
+  .restriction-option .custom-button {
+    display: flex; /* Use flexbox for easy centering */
+    align-items: center; /* Centers the text vertically */
+    justify-content: center; /* Centers the text horizontally */
+    width: 100%; /* Full width to maintain button size */
+    padding: 15px; /* Padding for spacing inside the button */
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border properties */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transition for background and border color changes */
+    text-align: center; /* Ensures text is centered if flexbox fails */
+  }
+
+  .restriction-option:hover .custom-button {
+    background-color: #f0f0f0;
+  }
+
+  .restriction-option input[type="checkbox"]:checked + .custom-button {
+    border-color: #007bff;
+    background-color: #e7f3ff;
+  }
+
+  .allergies {
+    margin-top: -15px; /* Adjust this value as needed to move the allergy options down */
+    margin-left: -30px;
+    padding: 20px 30px;
+  }
+  .allergy-option {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .allergy-option input[type="checkbox"] {
+    display: none;
+  }
+
+  .allergy-option .custom-button {
+    display: flex; /* Use flexbox for easy centering */
+    align-items: center; /* Centers the text vertically */
+    justify-content: center; /* Centers the text horizontally */
+    width: 100%; /* Full width to maintain button size */
+    padding: 15px; /* Padding for spacing inside the button */
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border properties */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transition for background and border color changes */
+    text-align: center; /* Ensures text is centered if flexbox fails */
+  }
+
+  .allergy-option:hover .custom-button {
+    background-color: #f0f0f0;
+  }
+
+  .allergy-option input[type="checkbox"]:checked + .custom-button {
+    border-color: #007bff;
+    background-color: #e7f3ff;
+  }
+
+
+  .update-btn {
+    padding: 15px 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .update-btn:hover {
+    background-color: #00548b;
+  }

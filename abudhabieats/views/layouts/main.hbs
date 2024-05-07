@@ -18,13 +18,21 @@
     {{else}}
         {{#if extendedHeader}}
             <header>
-                <div class="logo">Abu Dhabi Eats</div>
+                <a href="/home" class="logo" >Abu Dhabi Eats</a>
                 <div class="user-info">
                     <span>Hi, {{username}}</span>
                     <a href="#">Settings</a>
                     <a href="#">Log Out</a>
                 </div>
             </header>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="/home">HOME</a></li>
+                    <li><a href="/meal-plan-pre-generate">MEAL PLAN</a></li>
+                    <li><a href="/reports">REPORTS</a></li>
+                    <li><a href="/update-profile">PROFILE</a></li>
+                </ul>
+            </nav>
         {{else}}
             <header>
                 <a href="/" class="logo">Abu Dhabi Eats</a>

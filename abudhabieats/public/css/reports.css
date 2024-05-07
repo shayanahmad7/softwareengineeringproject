@@ -11,8 +11,8 @@ body {
     color: #0066ee;
     padding: 20px 20px;
     display: flex;
-    justify-content: space-between; /* Aligns items to each end of the container */
-    align-items: center; /* Aligns items vertically */
+    justify-content: space-between;
+    align-items: center;
   }
 
   .logo {
@@ -49,23 +49,22 @@ body {
   .nav-links a {
     color: #fff;
     text-decoration: none;
-    padding: 15px 20px; /* Adding padding for space around the text */
-    font-weight: bold; /* Making the text bold */
+    padding: 15px 20px;
+    font-weight: bold;
   }
 
   .nav-links a[href="##"] {
     background-color: #00548b;
   }
 
-
   .summary-container {
-  background-color: #f8f9fa;
-  padding: 20px;
-  margin: auto;
-  width: fit-content; /* Adjust width as needed */
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: auto;
+    width: fit-content;
   }
 
-  .daily-summary {
+  .weekly-summary {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 50px;
@@ -74,50 +73,26 @@ body {
     text-align: left;
   }
 
-  .calories-remaining {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-
-  .calories-text {
-    font-size: 28px;
-    display: grid;
-    grid-template-columns: auto auto; /* Adjust as needed */
-    gap: 20px; /* Adjust as needed */
-  }
-
-  h2 {
+  .summary-heading {
     font-size: 30px;
     margin-bottom: 30px;
     margin-top: 5px;
     text-align: center;
   }
 
-  .calories-value,
-  .protein-value,
-  .carbs-value,
-  .fat-value {
-    font-size: 28px;
-    color: green;
-  }
-
-  .feeling-hungry-btn {
-    padding: 15px 40px;
-    margin-left: 70px;
-    background-color: #ff5733;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
+  .summary-list {
     font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    text-decoration: none;
+    margin-bottom: 20px;
   }
 
-  .feeling-hungry-btn:hover {
-    background-color: #e64d00;
-  
+  .summary-list li {
+    margin-bottom: 10px;
+  }
+
+  .suggestions {
+    font-size: 20px;
+  }
+
+  .suggestions li {
+    margin-bottom: 10px;
   }

@@ -1,86 +1,94 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #007bff;
-  }
-  header {
-    padding: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    padding-left: 210px;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .logo {
-    color: #007bff;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .user-login-icon {
-      display: flex;
-      justify-content: flex-end;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #007bff;
+}
+header {
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* Adjust alignment */
+  align-items: center;
+}
 
-  .user-login-icon img {
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
-  }
-  .landing-container {
-    width: 600px;
-    height: 300px;
-    margin: 40px auto;
-    padding: 70px;
-    padding-right: 600px;
-    padding-top: 100px;
-    background-color: #007bff;
-    color: white;
-    align-items: left;
-    justify-content: center;
-  }
-  .text-container1 {
-    font-size: 70px; /* Adjust the size as needed */
-    font-weight: 700; /* Makes the text bold */
-  }
-  .text-container2 {
-    font-size: 70px; /* Adjust the size as needed */
-    font-weight: 350;
-  }
-  h1 {
-    font-size: 48px;
-    font-weight: 700;
+.logo {
+  color: #007bff;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  padding-left: 190px;
+}
 
-  }
-  p {
-    font-size: 17px;
-    margin-bottom: 30px;
-  }
-  .button {
-    display: inline-block; /* Ensures the link behaves like a button */
-    padding: 18px 65px;
-    font-size: 18px;
-    font-weight: 700; /* Bold text */
-    background-color: white;
-    color: #007bff; /* Blue text */
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-decoration: none; /* Removes underline from link */
-    text-align: center; /* Centers text in the button */
-    line-height: normal; /* Ensures text is vertically centered */
-    transition: background-color 0.3s, color 0.3s; /* Smooth color transition for hover effects */
-    }
+.user-login-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 190px;
+}
 
-    .button:hover, .button:focus {
-        background-color: #0056b3; /* Changes background on hover/focus */
-        color: white; /* Changes text color on hover/focus */
-        outline: none; /* Removes outline on focus */
-    }
+.user-login-icon img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.landing-container {
+  width: 600px;
+  height: 300px;
+  margin: 40px auto;
+  padding: 70px;
+  padding-right: 600px;
+  padding-top: 100px;
+  background-color: #007bff;
+  color: white;
+  align-items: left;
+  justify-content: center;
+}
+.text-container1 {
+  font-size: 70px; /* Adjust the size as needed */
+  font-weight: 700; /* Makes the text bold */
+}
+.text-container2 {
+  font-size: 70px; /* Adjust the size as needed */
+  font-weight: 350;
+}
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+p {
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+.button {
+  display: inline-block; /* Ensures the link behaves like a button */
+  padding: 18px 65px;
+  font-size: 18px;
+  font-weight: 700; /* Bold text */
+  background-color: white;
+  color: #007bff; /* Blue text */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none; /* Removes underline from link */
+  text-align: center; /* Centers text in the button */
+  line-height: normal; /* Ensures text is vertically centered */
+  transition: background-color 0.3s, color 0.3s; /* Smooth color transition for hover effects */
+}
 
-    .arrow {
-        padding-left: 12px; /* Adds space between the text and the arrow */
-        font-size: 18px; /* You can adjust this size to make the arrow bigger or smaller */
-    }
+.button:hover,
+.button:focus {
+  background-color: #0056b3; /* Changes background on hover/focus */
+  color: white; /* Changes text color on hover/focus */
+  outline: none; /* Removes outline on focus */
+}
+
+.arrow {
+  padding-left: 12px; /* Adds space between the text and the arrow */
+  font-size: 18px; /* You can adjust this size to make the arrow bigger or smaller */
+}
