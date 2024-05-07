@@ -1,18 +1,20 @@
 <div class="container">
-      <p>Enter the number of days you want the meal plan to be for!</p>
-      <section class="meal-plan">
-        <h2>Number of days:</h2>
-        <div class="days-selection">
-          <input
-            type="number"
-            id="days"
-            name="days"
-            min="1"
-            max="7"
-            value="1"
-          />
-          <label for="days"></label>
-        </div>
-      </section>
-      <a href="/meal-plan-post-generate" class="generate-btn">Generate</a>
+    <p>Enter the number of days you want the meal plan to be for!</p>
+    <form action="/meal-plan-pre-generate" method="post">
+        <section class="meal-plan">
+            <h2>Number of days:</h2>
+            <div class="days-selection">
+                <input
+                    type="number"
+                    id="days"
+                    name="days"
+                    min="1"
+                    max="7"
+                    value="1"
+                />
+                <label for="days"></label>
+            </div>
+        </section>
+        <button type="submit" class="generate-btn">Generate</button>
+    </form>
 </div>

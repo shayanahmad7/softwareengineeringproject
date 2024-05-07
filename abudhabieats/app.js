@@ -270,22 +270,19 @@ const port = 4000;
         // Route for the meal-feeling-hungry page
         app.get('/meal-feeling-hungry', async (req, res) => {
             try {
-                console.log("Attempting to fetch meals...");
+                
                 const meals = await Meal.aggregate([
-                    { $match: { description: { $regex: /^.{10,}$/ } } },  // Filter for descriptions at least 50 characters long
+                    { $match: { description: { $regex: /^.{20,}$/ } } },  // Filter for descriptions at least 50 characters long
                     { $sample: { size: 3 } }  // Get 3 random documents
                 ]);
-                console.log("Meals fetched:", meals); // Log the fetched meals to see what we get from the database
-                if (meals.length === 0) {
-                    console.log("No meals fetched. Check database data and query filters.");
-                }
+                
                 res.render('meal-feeling-hungry', {
                     style: '/css/meal-feeling-hungry.css',
                     extendedHeader: true,
                     meals: meals  // Pass the meals data to the template
                 });
             } catch (err) {
-                console.error("Error fetching meals from database:", err);
+                
                 res.status(500).send('Error rendering the page');
             }
         });
@@ -306,12 +303,48 @@ const port = 4000;
             });
         });
 
+        
+        // Post Route for the meal-plan-pre-generate-hungry page
+        app.post('/meal-plan-pre-generate', async (req, res) => {
+            const days = parseInt(req.body.days, 10);
+            const daysPlan = [];
+        
+            for (let i = 1; i <= days; i++) {
+                const dayMeals = await generateMealsForDay();
+                daysPlan.push({ day: `Day ${i}`, meals: dayMeals });  // Label days correctly
+            }
+            req.session.mealPlan = daysPlan;
+            res.redirect('/meal-plan-post-generate');
+        });
+        
+        async function generateMealsForDay() {
+            const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];  // Assuming these types are just for labeling
+            const meals = [];
+        
+            for (const type of mealTypes) {
+                const meal = await Meal.aggregate([
+                    { $match: { description: { $regex: /^.{20,}$/ } } },  // Adjust this if you have specific types in your data
+                    { $sample: { size: 1 } }
+                ]);
+        
+                if (meal.length > 0) {
+                    meals.push({ ...meal[0], type: type });  // Add the meal type for labeling
+                }
+            }
+        
+            return meals;
+        }
+        
+
         // Route for the meal-plan-post-generate-hungry page
         app.get('/meal-plan-post-generate', (req, res) => {
-            res.render('meal-plan-post-generate', {
-                style: '/css/meal-plan-post-generate.css',
-                extendedHeader: true
-            }, function(err, html) {
+            const daysPlan = req.session.mealPlan || []; // Retrieve the plan from the session or another source
+        res.render('meal-plan-post-generate', {
+            style: '/css/meal-plan-post-generate.css',
+            extendedHeader: true,
+            daysPlan: daysPlan,
+            days: daysPlan.length
+        }, function(err, html) {
                 if (err) {
                     console.error(err);
                     res.status(500).send('Error rendering the page');
@@ -321,7 +354,9 @@ const port = 4000;
             });
         });
 
-        // Route for the meal-plan-post-generate-hungry page
+
+
+        
         app.get('/reports', (req, res) => {
             res.render('reports', {
                 style: '/css/reports.css',
@@ -335,7 +370,7 @@ const port = 4000;
                 }
             });
         });
-        // Route for the meal-plan-post-generate-hungry page
+        
         app.get('/update-profile', (req, res) => {
             res.render('update-profile', {
                 style: '/css/update-profile.css',
@@ -347,6 +382,34 @@ const port = 4000;
                 } else {
                     res.send(html);
                 }
+            });
+        });
+        app.post('/update-profile', (req, res) => {
+            if (!req.isAuthenticated()) {
+                return res.status(403).send('Not authenticated');
+            }
+        
+            const userId = req.user._id;  // Assuming req.user is populated from the session
+            const updatedData = {
+                height: parseInt(req.body.height, 10),
+                weight: parseInt(req.body.weight, 10),
+                goalWeight: parseInt(req.body.goal_weight, 10),
+                goals: req.body.goals || [],
+                restrictions: req.body.restrictions || [],
+                allergies: req.body.allergies || []
+            };
+        
+
+            User.findByIdAndUpdate(userId, updatedData, { new: true })
+            .then(updatedUser => {
+                // Redirect to the home page after successful profile update
+                res.redirect('/home');
+            })
+            .catch(error => {
+                console.error('Error updating user profile:', error);
+                // Optionally, you could use flash messages to show errors
+                req.flash('error_msg', 'Failed to update profile.');
+                res.redirect('/update-profile');  // Redirect back to the update form
             });
         });
 
