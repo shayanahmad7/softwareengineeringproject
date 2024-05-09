@@ -20,6 +20,7 @@ const port = 4000;
 dotenv.config();
 // Get the OpenAI API key from the environment variables
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+console.log(OPENAI_API_KEY);
 
 if (!OPENAI_API_KEY) {
     console.error('OpenAI API key not found. Please add it to your .env file.');
@@ -266,13 +267,26 @@ const client = new openai(OPENAI_API_KEY);
                     console.error('Failed to create user:', error.message);  // Log the actual error message
                     res.status(500).render('error', { message: "Failed to create profile: " + error.message });
 
-
-                    // console.error('Failed to create user:');
-                    // res.status(500).render('error', { message: "Failed to create profile." });
                 }
             });
         });
 
+        async function calculateNeeds(user) {
+            const prompt = `Calculate daily nutritional needs for a ${user.sex}, age ${calculateAge(user.birthDate)} years, height ${user.height} cm, weight ${user.weight} kg, goal weight ${user.goalWeight} kg, aiming for ${user.goals.join(', ')}, with dietary restrictions of ${user.restrictions.join(', ')} and allergies to ${user.allergies.join(', ')}.`;
+        
+            const response = await client.chat.completions.create({
+                model: 'gpt-3.5-turbo', 
+                messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: prompt }],
+                max_tokens: 1500
+            });
+        
+            if (response.choices && response.choices.length > 0 && response.choices[0].message) {
+                return response.choices[0].message.content.trim();
+            } else {
+                throw new Error('Invalid response from the OpenAI API');
+            }
+        }
+        
         app.get('/createprofile7', (req, res) => {
             res.render('createprofile7', { style: '/css/createprofile7.css' });
         });
