@@ -20,7 +20,6 @@ const port = 4000;
 dotenv.config();
 // Get the OpenAI API key from the environment variables
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-console.log(OPENAI_API_KEY);
 
 if (!OPENAI_API_KEY) {
     console.error('OpenAI API key not found. Please add it to your .env file.');
@@ -29,6 +28,7 @@ if (!OPENAI_API_KEY) {
 
 // Initialize the OpenAI API client
 const client = new openai(OPENAI_API_KEY);
+
 
 (async () => {
     try {
@@ -115,8 +115,6 @@ const client = new openai(OPENAI_API_KEY);
             next();
         });
 
-
-
         app.use(session({
             secret: 'some secret',
             resave: false,
@@ -136,11 +134,30 @@ const client = new openai(OPENAI_API_KEY);
             }
         });
 
-        app.post('/login', passport.authenticate('local', {
-            successRedirect: '/home',
-            failureRedirect: '/login',
-            failureFlash: true
-        }));
+
+        app.post('/login', (req, res, next) => {
+            passport.authenticate('local', (err, user, info) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!user) {
+                    req.flash('error', info.message);  // Using flash to show error messages
+                    return res.redirect('/login');
+                }
+                req.logIn(user, function(err) {
+                    if (err) {
+                        return next(err);
+                    }
+                    
+                    const { calories, carbs, protein, fat } = user.targets;
+        
+                    req.session.targets = { calories, carbs, protein, fat };
+        
+                    // // Redirect to the home page after successful login and data handling
+                    return res.redirect('/home');
+                });
+            })(req, res, next);
+        });
 
         // Profile creation stages
         app.get('/createprofile1', (req, res) => {
@@ -191,7 +208,7 @@ const client = new openai(OPENAI_API_KEY);
             res.redirect('/createprofile4');
         });
 
-        // Continue similar modifications for remaining steps...
+        
         app.get('/createprofile4', (req, res) => {
             res.render('createprofile4', { style: '/css/createprofile4.css' });
         });
@@ -222,7 +239,6 @@ const client = new openai(OPENAI_API_KEY);
             req.session.userProfile.goalWeight = req.body.goal_weight;
             req.session.userProfile.sex = req.body.sex;
             req.session.userProfile.birthDate = req.body.birthdate;
-            console.log(req.session.userProfile.height)
             res.redirect('/createprofile6');
         });
 
@@ -235,8 +251,7 @@ const client = new openai(OPENAI_API_KEY);
             req.session.userProfile.email = req.body.email;
             // Store raw password temporarily (encrypt before saving)
             const rawPassword = req.body.password;
-            console.log(req.session.userProfile)
-
+        
             // Encrypt the password and save the user
             bcrypt.hash(rawPassword, 10, async (err, hashedPassword) => {
                 if (err) {
@@ -244,23 +259,39 @@ const client = new openai(OPENAI_API_KEY);
                 }
                 req.session.userProfile.password = hashedPassword;
 
+
+                const prompt = constructTargetPrompt(req.session.userProfile);
+                const Target = await generateTarget(prompt);
+
+                try {
+                    targetjs = JSON.parse(Target);
+                } catch (e) {
+                    return console.error(e); 
+                }
+                req.session.targets=targetjs;
                 // Create a new user with the data stored in session
                 const userData = {
+                    
                     ...req.session.userProfile,
                     height: parseInt(req.session.userProfile.height, 10),
                     weight: parseInt(req.session.userProfile.weight, 10),
                     goalWeight: parseInt(req.session.userProfile.goalWeight, 10), // ensure this is a number, even if optional
-                    birthDate: new Date(req.session.userProfile.birthDate) // converting string to Date object
-                };
+                    birthDate: new Date(req.session.userProfile.birthDate), // converting string to Date object
+                    targets: {
+                        calories: parseInt(targetjs.calories, 10),
+                        protein: parseInt(targetjs.protein, 10),
+                        fat: parseInt(targetjs.fat, 10),
+                        carbs: parseInt(targetjs.carbs, 10),
+                    }
 
+                };
                 // Create a new user instance
                 const newUser = new User(userData);
-                console.log(newUser)
-                //const newUser = new User(req.session.userProfile);
+
                 try {
                     await newUser.save();
-                    console.log(newUser)
                     req.session.userProfile = null; // Clear the stored profile data
+                    
                     res.redirect('/createprofile7'); // Redirect to the home page after successful registration
 
                 } catch (error) {
@@ -271,27 +302,16 @@ const client = new openai(OPENAI_API_KEY);
             });
         });
 
-        async function calculateNeeds(user) {
-            const prompt = `Calculate daily nutritional needs for a ${user.sex}, age ${calculateAge(user.birthDate)} years, height ${user.height} cm, weight ${user.weight} kg, goal weight ${user.goalWeight} kg, aiming for ${user.goals.join(', ')}, with dietary restrictions of ${user.restrictions.join(', ')} and allergies to ${user.allergies.join(', ')}.`;
-        
-            const response = await client.chat.completions.create({
-                model: 'gpt-3.5-turbo', 
-                messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: prompt }],
-                max_tokens: 1500
-            });
-        
-            if (response.choices && response.choices.length > 0 && response.choices[0].message) {
-                return response.choices[0].message.content.trim();
-            } else {
-                throw new Error('Invalid response from the OpenAI API');
-            }
-        }
-        
         app.get('/createprofile7', (req, res) => {
-            res.render('createprofile7', { style: '/css/createprofile7.css' });
+
+                    const targetCalories = req.session.targets.calories;
+
+                    res.render('createprofile7', {
+                        
+                        targetCalories: targetCalories, // Pass the calories value to the template
+                        style: '/css/createprofile7.css'
+                    });
         });
-
-
 
 
         app.get('/home', (req, res) => {
@@ -299,14 +319,31 @@ const client = new openai(OPENAI_API_KEY);
                 // If the user is not authenticated, redirect to login
                 return res.redirect('/login');
             }
+        
+            // Extract targets from user object
+            const { calories, carbs, protein, fat } = req.session.targets;
+        
             // If a user is authenticated, render the home page with user and styling info
             res.render('home', {
-            style: '/css/home.css',
-            extendedHeader: true,
-            user: req.user  // Passport adds the user to req.user when authenticated
+                style: '/css/home.css',
+                extendedHeader: true,
+                user: req.user,  // Passport adds the user to req.user when authenticated
+                calories,
+                carbs,
+                protein,
+                fat
             });
         });
-
+        //Logout Route
+        app.get('/logout', (req, res) => {
+            req.logout(function(err) {
+            if (err) {
+                return next(err);
+            }
+            res.redirect('/login');
+            });
+        });
+  
         // Route for the meal-feeling-hungry page
         app.get('/meal-feeling-hungry', async (req, res) => {
             try {
@@ -395,8 +432,6 @@ const client = new openai(OPENAI_API_KEY);
         });
 
 
-
-        
         app.get('/reports', (req, res) => {
             res.render('reports', {
                 style: '/css/reports.css',
@@ -454,7 +489,6 @@ const client = new openai(OPENAI_API_KEY);
             });
 
             
-
             function constructMealPlanPrompt(user) {
                 return `As a nutritionist, create a detailed daily meal plan for a ${user.sex} with the following specifics:
                 Goals: ${user.goals.join(', ')}
@@ -465,6 +499,16 @@ const client = new openai(OPENAI_API_KEY);
                 Allergies: ${user.allergies.join(', ') || "None"}
                 Please provide a balanced plan including breakfast, lunch, dinner, and suggested snacks. Each meal should include calculated portion sizes with complete calorie and nutrient information, and consider the dietary restrictions and allergies specified.`;
             }
+
+            function constructTargetPrompt(user) {
+                return `As a nutritionist, create a daily nutrition intake target for a ${user.sex} with the following specifics:
+                Goals: ${user.goals.join(', ')}
+                Height: ${user.height} cm
+                Weight: ${user.weight} kg
+                Goal Weight: ${user.goalWeight ? user.goalWeight + " kg" : "No specific goal weight"}
+                Please provide daily calorie (in kcal), protein, fat, carbs (in grams) intake target.
+                In response, Provide only Valid JSON with one column called "calories", one called "protein", one called "fat", and one called "carbs".`
+                }
             
             app.get('/ai', async (req, res) => {
                 if (!req.isAuthenticated()) {
@@ -474,7 +518,7 @@ const client = new openai(OPENAI_API_KEY);
             
                 try {
                     const userId = req.user._id;
-                    console.log("Fetching user with ID:", userId);
+                    
                     const user = await User.findById(userId);
             
                     if (!user) {
@@ -483,10 +527,10 @@ const client = new openai(OPENAI_API_KEY);
                     }
             
                     const prompt = constructMealPlanPrompt(user);
-                    console.log("Generated prompt for OpenAI:", prompt);
+                    
                     const mealPlan = await generateMealPlan(prompt);
             
-                    console.log("Meal plan received from OpenAI:", mealPlan);
+                    
                     res.render('ai', {
                         style: '/css/ai.css',
                         extendedHeader: true,
@@ -512,6 +556,30 @@ const client = new openai(OPENAI_API_KEY);
             
                 if (response.choices && response.choices.length > 0 && response.choices[0].message) {
                     return response.choices[0].message.content.trim();
+                } else {
+                    throw new Error('Invalid response from the OpenAI API');
+                }
+            }
+
+            
+                        
+            async function generateTarget(prompt) {
+                const response = await client.chat.completions.create({
+                    model: 'gpt-3.5-turbo-0125', 
+                    response_format: {"type":"json_object"},
+                    messages: [{ role: "system", content: `You are a helpful assistant designed to provide output in valid JSON. The data schema should be like this example:
+                    {
+                        "calories":"1700",
+                        "protein":"120",
+                        "fat":"50",
+                        "carbs":"180",
+                    }` }, 
+                    { role: "user", content: prompt }],
+                    max_tokens: 1000
+                });
+            
+                if (response.choices && response.choices.length > 0 && response.choices[0].message) {
+                    return response.choices[0].message.content;
                 } else {
                     throw new Error('Invalid response from the OpenAI API');
                 }

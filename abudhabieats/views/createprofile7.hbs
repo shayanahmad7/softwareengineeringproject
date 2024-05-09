@@ -1,23 +1,29 @@
 {{!< layouts/main}}
 
+
 <div class="container">
       <div class="congrats-container">
         <h1>Congratulations!</h1>
         <p>Your daily net calorie goal is:</p>
         <div class="calorie-goal">
-          <input type="text" value="1,620" readonly />
+          
+          <input type="text" value="{{targetCalories}}" readonly />
           <span>calories</span>
         </div>
-        <p>With this plan, you should:<br />Lose 10 lbs by July 11</p>
+        <p>Stick to your plan and see the results make a difference!</p>
         <div class="email-signup">
           <input type="checkbox" id="signup-emails" />
           <label for="signup-emails">Sign up for emails</label>
           <p>
-            Get nutrition from Abu Dhabi Eats. Plus, a first look at new
+            Get nutritional info from Abu Dhabi Eats. Plus, a first look at new
             features!
           </p>
         </div>
-        <a href="/home" class="button">EXPLORE ABU DHABI EATS</a>
+        <form action="home" method="GET">
+          <button name="exploreabuhdabieats" value="yes" class="button">EXPLORE ABU DHABI EATS</button>
+        </form>
+
+        {{!-- <a href="/home" class="button">EXPLORE ABU DHABI EATS</a> --}}
       </div>
 </div>
 

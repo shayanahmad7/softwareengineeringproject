@@ -1,21 +1,21 @@
+{{!< layouts/main}}
 
-
-    <div class="summary-container">
+<div class="summary-container">
     <section class="daily-summary">
-      <h2>Your Daily Summary</h2>
+      <h2>Your Daily Nutrition Targets</h2>
       <div class="calories-remaining">
         <div class="calories-text">
-          Calories Remaining:
-          <span class="calories-value">1520</span>
+          Calories:
+          <span class="calories-value">{{calories}}</span>
           Carbohydrates:
-          <span class="carbs-value">234g</span>
+          <span class="carbs-value">{{carbs}}g</span>
           Protein:
-          <span class="protein-value">188g</span>
+          <span class="protein-value">{{protein}}g</span>
           Fat:
-          <span class="fat-value">107g</span>
+          <span class="fat-value">{{fat}}g</span>
         </div>
       </div>
       
       <a href="/meal-feeling-hungry" class="feeling-hungry-btn">Feeling Hungry?</a>
-      
-    </div>
+    </section>
+</div>
