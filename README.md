@@ -6,7 +6,7 @@ This is our super cool project for software engineering project for Spring 2024.
 Abu Dhabi Eats is an innovative AI-driven nutrition and food ordering web application tailored for the diverse population of Abu Dhabi. This application helps users plan meals and manage their diet by integrating local restaurant data, offering personalized meal recommendations based on dietary preferences, and facilitating direct meal orders.
 
 ## Project Structure
-
+```
 softwareengineeringproject/
 │
 ├── client/                    	# React frontend
@@ -54,12 +54,15 @@ softwareengineeringproject/
    git clone https://github.com/yourgithub/softwareengineeringproject.git
 
 2. Install dependencies
+   ```bash
       npm install
    
-3. Navigate to abudhabieats flavor
+3. Navigate to abudhabieats folder:
+  ```bash
       cd abudhabieats
    
 4. Run using
+  ```bash
       node app.js
 ## Contributing
 
