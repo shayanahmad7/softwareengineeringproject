@@ -53,6 +53,14 @@ softwareengineeringproject/
    ```bash
    git clone https://github.com/yourgithub/softwareengineeringproject.git
 
+2. Install dependencies
+      npm install
+   
+3. Navigate to abudhabieats flavor
+      cd abudhabieats
+   
+4. Run using
+      node app.js
 ## Contributing
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
